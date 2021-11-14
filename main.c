@@ -1,11 +1,3 @@
-
-
-unsigned char gfx[64 * 32];
-
-unsigned char delay_timer;
-unsigned char sound_timer;
-
-
 unsigned char key[16];
 
 void initialize() {
@@ -17,6 +9,9 @@ void initialize() {
     unsigned short sp;
     unsigned short index;
     unsigned short pc;
+    unsigned char delay_timer;
+    unsigned char sound_timer;
+    unsigned char gfx[64 * 32];
     unsigned char chip8_fontset[80] =
     { 
     0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -43,15 +38,41 @@ void initialize() {
     sp = 0;      // Reset stack pointer
  
   // Clear display	
+  for (int i = 0; i < 64; ++i) {
+
+    for (int j = 0; i < 32; ++j) {
+
+      gfx[i][j] = 0;
+
+    }
+  }
+
   // Clear stack
+  for (int i = 0; i < 16; ++i) {
+
+    stack[i] = 0;
+  }
+
   // Clear registers V0-VF
+  for (int i = 0; i < 16; ++i) {
+
+    V[i] = 0;
+  }
   // Clear memory
- 
+  for (int i = 0; i < 4096; ++i) {
+
+    memory[i] = 0;
+  }
   // Load fontset
-    for(int i = 0; i < 80; ++i)
-        memory[i] = chip8_fontset[i];		
+  for(int i = 0; i < 80; ++i) {
+
+    memory[i] = chip8_fontset[i];		
+  }
  
   // Reset timers
+  delay_timer = 0;
+  sound_timer = 0;
+
 }
  
 void emulateCycle() {
