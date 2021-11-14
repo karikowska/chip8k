@@ -95,6 +95,22 @@ void setupGraphics() {
   // Update timers
 }
 
+void setKeys() {
+  // Fetch Opcode
+  // Decode Opcode
+  // Execute Opcode
+ 
+  // Update timers
+}
+
+void drawGraphics() {
+  // Fetch Opcode
+  // Decode Opcode
+  // Execute Opcode
+ 
+  // Update timers
+}
+
 #include <stdio.h>
 #include
 #include   // OpenGL graphics and input
